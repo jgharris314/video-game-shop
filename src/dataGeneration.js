@@ -8,7 +8,7 @@ let records = {};
 
 function generateCustomers() {
   let customerList = [];
-  for (let x = 0; x < 100; x++) {
+  for (let x = 0; x < 10; x++) {
     customerList.push({
       firstName: faker.name.firstName(),
       lastName: faker.name.lastName(),
@@ -39,10 +39,11 @@ function generateCustomers() {
 function generateGames() {
     let inventory = [];
 
-    for (let i = 0; i < 100; i++){
+    for (let i = 0; i < 10; i++){
         inventory.push({
             title : `${faker.random.words(Math.floor(Math.random()*3) + 1)} ${Math.floor(Math.random()*9) + 1}`,
             consoles : _.shuffle(["PC", "Xbox", "Playstation"]).slice(0, Math.floor(Math.random()*3) + 1),
+            genre : _.sample(["Horror", "Zombie", "Sandbox", "Shooter", "MMO", "MOBA"]),
             priceInDollars : Math.floor(Math.random()*75) + 25,
             numberOfCopies : Math.floor(Math.random()*20) + 1
         });

@@ -34,4 +34,8 @@ canTheyBuy(customers, inventory);
 
 let sales = dataGen.getSales();
 
+function getTotalSales() {
+    
+}
 
+module.exports = {canTheyBuy}
