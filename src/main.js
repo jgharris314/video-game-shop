@@ -32,5 +32,6 @@ const inventory = dataGen.generateGames();
 
 canTheyBuy(customers, inventory);
 
-console.log(customers);
-console.log(dataGen.getSales());
+let sales = dataGen.getSales();
+
+
