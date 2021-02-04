@@ -1,50 +1,12 @@
-let faker = require('faker');
-let _ = require('lodash');
+const faker = require('faker');
+const _ = require('lodash');
+const dataGen = require('./dataGeneration');
 
-let saleID = 150;
 
-let records = {};
+const customers = dataGen.generateCustomers();
 
-function findCustomers() {
-    let customerList = [];
-    for (let x = 0; x < 100; x++) {
-        customerList.push({ 
-            firstName : faker.name.firstName(),
-            lastName : faker.name.lastName(),
-            consolesOwned : _.shuffle(["PC", "Xbox", "Playstation"]).slice(0, Math.floor(Math.random()*3)+1 ),
-            budget : Math.floor(Math.random()*250),
-            gamesOwned : [],
-            buyGame : function(title, price, leftoverQuantity) {
-                this.gamesOwned.push(title);
-                this.budget -= price;
-                records[saleID] = {
-                    customer: `${this.firstName} ${this.lastName}`,
-                    game: title,
-                    total: price,
-                    leftover_inventory: leftoverQuantity
-                }
-                saleID++;
-            }
-        });
-    }
-    return customerList;
-}
-const customers = findCustomers();
 
-function genereateGames() {
-    let inventory = [];
-
-    for (let i = 0; i < 100; i++){
-        inventory.push({
-            title : `${faker.random.words(Math.floor(Math.random()*3) + 1)} ${Math.floor(Math.random()*9) + 1}`,
-            consoles : _.shuffle(["PC", "Xbox", "Playstation"]).slice(0, Math.floor(Math.random()*3) + 1),
-            priceInDollars : Math.floor(Math.random()*75) + 25,
-            numberOfCopies : Math.floor(Math.random()*20) + 1
-        });
-    }
-    return inventory;
-}
-const inventory = genereateGames();
+const inventory = dataGen.genereateGames();
 
 
 // I think we should restructure this to be more realistic.
