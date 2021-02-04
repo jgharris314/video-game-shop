@@ -36,7 +36,7 @@ function generateCustomers() {
 
 // generateGames creates a list of game objects with random data
 
-function genereateGames() {
+function generateGames() {
     let inventory = [];
 
     for (let i = 0; i < 100; i++){
@@ -50,4 +50,12 @@ function genereateGames() {
     return inventory;
 }
 
-module.exports = {generateCustomers, genereateGames};
+function getSaleId() {
+  return saleID;
+}
+
+function getSales() {
+  return records;
+}
+
+module.exports = {generateCustomers, generateGames, getSaleId, getSales};
